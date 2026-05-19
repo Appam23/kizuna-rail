@@ -105,6 +105,23 @@ article.booking-page {
                                     font-weight: 600;
                                 }
                             }
+
+                            .ticket-price-usd {
+                                display: flex;
+                                align-items: baseline;
+                                gap: var(--space-xs);
+                                color: #6f42c1;
+
+                                .price-symbol {
+                                    font-size: var(--font-size-lg);
+                                    font-weight: 500;
+                                }
+
+                                .price-amount {
+                                    font-size: var(--font-size-2xl);
+                                    font-weight: 600;
+                                }
+                            }
                         }
 
                         .ticket-description {

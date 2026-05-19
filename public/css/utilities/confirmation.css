@@ -406,14 +406,147 @@ article.confirmation-page {
 }
 
 @media print {
-    article.confirmation-page {
-        .confirmation-actions {
-            display: none;
-        }
+    body > header,
+    body > footer,
+    nav {
+        display: none !important;
+    }
 
-        .confirmation-header {
-            background-color: white;
-            border: 2px solid var(--clr-primary);
-        }
+    body {
+        margin: 0;
+    }
+
+    article.confirmation-page {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+
+    article.confirmation-page > * {
+        display: none !important;
+    }
+
+    article.confirmation-page .confirmation-header {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    article.confirmation-page .confirmation-content {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    article.confirmation-page .passengers-info {
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    article.confirmation-page .confirmation-header {
+        padding: var(--space-xl);
+        background-color: white;
+        border: 2px solid var(--clr-primary);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        margin-bottom: var(--space-lg);
+    }
+
+    article.confirmation-page .confirmation-header .confirmation-title {
+        font-size: var(--font-size-2xl);
+        margin: 0;
+    }
+
+    article.confirmation-page .confirmation-header .confirmation-message {
+        font-size: var(--font-size-md);
+        margin: 0;
+    }
+
+    article.confirmation-page .confirmation-header .booking-reference {
+        gap: var(--space-md);
+        padding: var(--space-md) var(--space-lg);
+        margin-top: var(--space-md);
+    }
+
+    article.confirmation-page .booking-details {
+        margin-top: var(--space-lg);
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    article.confirmation-page .booking-details .details-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+    }
+
+    article.confirmation-page .booking-details .detail-card {
+        padding: var(--space-md);
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    article.confirmation-page .booking-details .detail-card .detail-icon {
+        font-size: var(--font-size-2xl);
+    }
+
+    article.confirmation-page .booking-details .detail-card .detail-value {
+        font-size: var(--font-size-md);
+    }
+
+    article.confirmation-page .passengers-info {
+        margin-top: var(--space-lg);
+    }
+
+    article.confirmation-page .passengers-info .passengers-list {
+        gap: var(--space-md);
+    }
+
+    article.confirmation-page .passengers-info .passenger-info-card {
+        margin-bottom: var(--space-md);
+    }
+
+    article.confirmation-page .passengers-info .passenger-header {
+        padding: var(--space-md) var(--space-lg);
+    }
+
+    article.confirmation-page .passengers-info .passenger-title {
+        font-size: var(--font-size-md);
+    }
+
+    article.confirmation-page .passengers-info .passenger-details {
+        padding: var(--space-md) var(--space-lg);
+        gap: var(--space-md);
+    }
+
+    article.confirmation-page .passengers-info .passenger-label {
+        font-size: var(--font-size-xs);
+    }
+
+    article.confirmation-page .passengers-info .passenger-value {
+        font-size: var(--font-size-md);
+    }
+
+    article.confirmation-page .confirmation-content > :not(.passengers-info),
+    article.confirmation-page .booking-details,
+    article.confirmation-page .next-steps,
+    article.confirmation-page .important-info,
+    article.confirmation-page .confirmation-actions {
+        display: none !important;
+    }
+
+    article.confirmation-page .booking-reference .reference-label {
+        display: none !important;
+    }
+
+    article.confirmation-page .booking-reference .reference-number {
+        font-size: var(--font-size-3xl);
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #000 !important;
+        padding: var(--space-xs) var(--space-md);
+        border: 2px solid #000;
+        border-radius: var(--radius-sm);
     }
 }
