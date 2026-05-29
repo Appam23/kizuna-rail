@@ -1,30 +1,36 @@
 import { getAllRoutes, getListOfRegions, getListOfSeasons } from '../../models/model.js';
 
-export default async (req, res) => {
-    const selectedRegion = (req.query.region || '').toString().trim().toLowerCase();
-    const selectedSeason = (req.query.season || '').toString().trim().toLowerCase();
+const myHelper = async (req, res) => {
+
+    const selectRegion = (req.query.region || "").toString().trim().toLowerCase();
+    const selectSeason = (req.query.season || "").toString().trim().toLowerCase();
 
     const regions = await getListOfRegions();
     const seasons = await getListOfSeasons();
 
     let routes = await getAllRoutes();
 
-    if (selectedRegion) {
-        routes = routes.filter((route) => route.region.toLowerCase() === selectedRegion);
+    // filtering and showing results
+
+    if (selectRegion) {
+        routes = routes.filter(route => (route.region || '').toLowerCase() === selectRegion);
+    }
+    if (selectSeason) {
+        routes = routes.filter(route => (route.bestSeason || '').toLowerCase() === selectSeason);
     }
 
-    if (selectedSeason) {
-        routes = routes.filter((route) => route.bestSeason.toLowerCase() === selectedSeason);
-    }
+    // Show (“render”) the results on a web page!
 
     res.render('routes/list', {
         title: 'Scenic Train Routes',
         regions,
-        routes,
         seasons,
+        routes,
         query: {
-            region: selectedRegion,
-            season: selectedSeason
+            region: selectRegion,
+            season: selectSeason
         }
     });
 };
+
+export default myHelper;
